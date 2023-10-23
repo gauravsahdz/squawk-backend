@@ -8,8 +8,9 @@ const xss = require('xss-clean');
 const path = require('path');
 
 
-const todosRouter = require('./routes/todosRoute');
-const usersRouter = require('./routes/usersRoute');
+const postRouter = require('./routes/postRoute');
+const userRouter = require('./routes/userRoute');
+const notificationRouter = require('./routes/notificationRoute');
 const globalErrorHandler = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
@@ -26,15 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 //1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
 app.use(helmet());
-
-// Limit requests from same API
-const limiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 hour window
-    max: 100, // start blocking after 100 requests
-    message: 'Too many requests from this IP, please try again after an hour!'
-});
-
-app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
@@ -61,8 +53,9 @@ app.get('/', (req, res) => {
 });
 
 // 3) ROUTES
-app.use('/api/v1/todos', todosRouter);
-app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/notifications', notificationRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

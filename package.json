@@ -18,10 +18,10 @@
   },
   "name": "server",
   "version": "1.0.0",
-  "description": "This is a simple todo app with user authentication where user can perform crud operation.",
+  "description": "This is a twitter clone server side code",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "Gaurav sah",

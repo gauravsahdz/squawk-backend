@@ -12,9 +12,9 @@ const app = require("./app");
 
 mongoose
   .connect(
-    // "mongodb+srv://gauravsahdz:2244@cluster0.indrrup.mongodb.net/Todos?retryWrites=true&w=majority",
     "mongodb+srv://gauravsahdz:2244@crud.jd7hb.mongodb.net/?retryWrites=true&w=majority",
     {
+      dbName: "squawk",
       useNewUrlParser: true,
     }
   )
