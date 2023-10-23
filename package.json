@@ -21,7 +21,7 @@
   "description": "This is a twitter clone server side code",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "Gaurav sah",
